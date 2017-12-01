@@ -2,12 +2,16 @@ const puzzle = "5162992814911695127194252761945964242912687126971558636518469379
 
 let sum = 0
 for (let i = 0; i < puzzle.length; i++) {
-    // get current & last digit (if we are at the end of the puzzle, the next digit ist the first)
+    // get current digit
     const currentDigit = puzzle[i]
-    const nextDigit = i !== puzzle.length-1 ? puzzle[i+1] : puzzle[0]
+    
+    // get digit "half way around the circular list"
+    // index of that digit is the current index + half the puzzle size, except when it "wraps around", then we have to substract the puzzle size
+    const newIndex = i + puzzle.length/2 > puzzle.length-1 ? i + puzzle.length/2 - puzzle.length : i + puzzle.length/2
+    const otherDigit = puzzle[newIndex]
     
     // if they match, summarize
-    if(currentDigit === nextDigit) {
+    if(currentDigit === otherDigit) {
         sum += parseInt(currentDigit)
     }
 }
