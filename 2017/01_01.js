@@ -2,7 +2,7 @@ const puzzle = "5162992814911695127194252761945964242912687126971558636518469379
 
 let sum = 0
 for (let i = 0; i < puzzle.length; i++) {
-    // get current & last digit (if we are at the end of the puzzle, the next digit ist the first)
+    // get current & last digit (if we are at the end of the puzzle, the next digit is the first)
     const currentDigit = puzzle[i]
     const nextDigit = i !== puzzle.length-1 ? puzzle[i+1] : puzzle[0]
     
