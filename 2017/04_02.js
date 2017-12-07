@@ -24,10 +24,16 @@ lineReader.on('close', function () {
 // passphrase is valid if it contains no duplicates --> convert to array and check for duplicate elements
 function passPhraseIsValid(passPhrase){
     const passPhraseArray = passPhrase.split(" ")
-    return !hasDuplicates(passPhraseArray)
+    return !hasDuplicates(passPhraseArray) && !hasAnagrams(passPhraseArray)
 }
 
 // helper method to check if an array contains duplicates
 function hasDuplicates(array) {
     return (new Set(array)).size !== array.length
+}
+
+// helper method to check if an array contains anagrams
+function hasAnagrams(array) {
+    const sortedArray = array.map(el => el.split("").sort().join(""))
+    return (new Set(sortedArray)).size !== sortedArray.length
 }
